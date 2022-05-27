@@ -15,29 +15,34 @@ public class VirtualPet {
     }
     //METHODS
     public void feed() {
-        hunger -= 20;
+        hunger = -10;
     }
 
     public void giveDrink() {
-        thirst -= 20;
+        thirst = -10;
     }
 
     public void playWith() {
-        boredom -= 20;
-        hunger += 20;
-        thirst += 20;
+        boredom = -10;
+        hunger += 10;
+        thirst += 10;
     }
 
     //TICK METHOD
     public void tick() {
-        hunger += 20;
-        thirst += 20;
-        boredom += 20;
+        hunger += 10;
+        thirst += 10;
+        boredom += 10;
         System.out.print("Hunger: " + getHunger() + " ");
         System.out.print("Thirst: " + getThirst() + " ");
-        System.out.print("Boredom: " + getBoredom());
+        System.out.println("Boredom: " + getBoredom());
     }
-
+    public boolean isAlive() {
+        if (hunger >= 100 || thirst >= 100) {
+            return false;
+        }
+        return true;
+    }
 
     //GETTERS
     public int getHunger() {

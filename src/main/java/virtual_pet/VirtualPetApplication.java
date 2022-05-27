@@ -10,9 +10,9 @@ public class VirtualPetApplication {
         System.out.println("Virtual Pet! Please enter your name.");
         String name = input.nextLine();
 
-        VirtualPet pet = new VirtualPet(name, 0, 0, 100);
+        VirtualPet pet = new VirtualPet(name, 0, 0, 0);
 
-        while (select != 0) {
+        while (select != 0 && pet.isAlive()) {
 
             System.out.println(" ");
             System.out.println("Pick a number:");
@@ -26,7 +26,9 @@ public class VirtualPetApplication {
 
             if (select == 1) {
                 pet.playWith();
-                System.out.println("That was fun!");
+                if (pet.getThirst() <= 80 && pet.getHunger() <= 80) {
+                    System.out.println("That was fun!");
+                }
             } else if (select == 2) {
                 pet.feed();
                 System.out.println("Yum! If only I had something to wash it all down with.");
@@ -37,6 +39,12 @@ public class VirtualPetApplication {
                 System.out.println("Your pet ran away! Game over.");
             }
             pet.tick();
+        }
+        if (pet.isAlive()) {
+            System.out.println("Thank you for playing.");
+        }
+        else {
+            System.out.println("Sorry, your pet died.");
         }
     }
 }
